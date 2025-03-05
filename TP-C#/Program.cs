@@ -1,44 +1,95 @@
 ﻿using System;
 
-class Program
+namespace TP_C_
 {
-    static void Main()
+    class Program
     {
-        // Exercise 5
-        Console.WriteLine("Hello, World!");
-
-        // Exercise 7
-        Console.WriteLine("Algum Erro existiu aqui.");
-        int[] numeros = new int[3];
-        for (int i = 0; i < 3; i++)
+        static void Main()
         {
-            numeros[i] = i;
-            Console.WriteLine(numeros[i]);
+            string? tpChoice = GetUserInput("Escolha o TP (1 ou 2):");
+            if (tpChoice == null)
+            {
+                Console.WriteLine("Escolha de TP inválida.");
+                return;
+            }
+
+            switch (tpChoice)
+            {
+                case "1":
+                    ExecuteTP1();
+                    break;
+                case "2":
+                    ExecuteTP2();
+                    break;
+                default:
+                    Console.WriteLine("Escolha de TP inválida.");
+                    break;
+            }
         }
 
-        // Exercise 8
-        Console.WriteLine("Qual seu nome?");
-        string? inputName = Console.ReadLine();
-        if (inputName != null)
+        static string? GetUserInput(string prompt)
         {
-            Console.WriteLine("Olá, " + inputName);
-        }
-        else
-        {
-            Console.WriteLine("Nome não fornecido.");
+            Console.WriteLine(prompt);
+            return Console.ReadLine();
         }
 
-        // Exercise 9
-        int age = 18;
-        double height = 1.75;
-        string anotherName = "Rafael";
-        Console.WriteLine("Nome: " + anotherName + ", Idade: " + age + ", Altura: " + height);
+        static void ExecuteTP1()
+        {
+            Console.WriteLine("Executando TP1:");
+            TP1.Exercises.Run();
+        }
 
-        // Exercise 10
-        string nullName;
-        int nullAge;
-        nullName = "Marcos";
-        nullAge = 18;
-        Console.WriteLine("Nome: " + nullName + ", Idade: " + nullAge);
+        static void ExecuteTP2()
+        {
+            string? exerciseChoice = GetUserInput("Escolha o Exercício (1-12):");
+            if (exerciseChoice == null)
+            {
+                Console.WriteLine("Escolha de exercício inválida.");
+                return;
+            }
+
+            switch (exerciseChoice)
+            {
+                case "1":
+                    TP2.Exercise01.Run();
+                    break;
+                case "2":
+                    TP2.Exercise02.Run();
+                    break;
+                case "3":
+                    TP2.Exercise03.Run();
+                    break;
+                case "4":
+                    TP2.Exercise04.Run();
+                    break;
+                case "5":
+                    TP2.Exercise05.Run();
+                    break;
+                case "6":
+                    TP2.Exercise06.Run();
+                    break;
+                case "7":
+                    TP2.Exercise07.Run();
+                    break;
+                case "8":
+                    TP2.Exercise08.Run();
+                    break;
+                case "9":
+                    TP2.Exercise09.Run();
+                    break;
+                case "10":
+                    TP2.Exercise10.Run();
+                    break;
+                case "11":
+                    TP2.Exercise11.Run();
+                    break;
+                case "12":
+                    TP2.Exercise12.Run();
+                    break;
+                default:
+                    Console.WriteLine("Escolha de exercício inválida.");
+                    break;
+            }
+        }
     }
 }

@@ -13,7 +13,7 @@ namespace TP_C_.TP2
             Console.WriteLine("Advinhe um número entre 1 até 100.");
             string? guess = Console.ReadLine();
 
-            Random random = new Random();
+            var random = new Random();
             int randomNumber = random.Next(1, 101);
 
             if (int.TryParse(guess, out int number))

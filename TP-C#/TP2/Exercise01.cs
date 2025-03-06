@@ -10,47 +10,40 @@ namespace TP_C_.TP2
     {
         public static void Run()
         {
-            Console.Write("Digite sua data de nascimento (dd/MM/yyyy): ");
+            Console.Write("Digite sua data de nascimento (dia/mês/ano): ");
             string? input = Console.ReadLine();
 
             if (string.IsNullOrEmpty(input))
             {
-                Console.WriteLine("Data inválida. Por favor, insira uma data no formato dd/MM/yyyy.");
+                Console.WriteLine("Data inválida. Por favor, insira uma data no formato dia/mês/ano.");
                 return;
             }
 
-            if (DateTime.TryParseExact(input, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime dataNascimento))
+            if (DateTime.TryParseExact(input, "dd/MM/yyyy", null, System.Globalization.DateTimeStyles.None, out DateTime birthDate))
             {
-                DateTime dataAtual = DateTime.Now;
+                DateTime now = DateTime.Now;
 
-                int idadeAnos = dataAtual.Year - dataNascimento.Year;
-                int idadeMeses = dataAtual.Month - dataNascimento.Month;
-                int idadeDias = dataAtual.Day - dataNascimento.Day;
+                int years = now.Year - birthDate.Year;
+                int months = now.Month - birthDate.Month;
+                int days = now.Day - birthDate.Day;
 
-                if (idadeMeses < 0)
+                if (days < 0)
                 {
-                    idadeAnos--;
-                    idadeMeses += 12;
+                    months--;
+                    days += DateTime.DaysInMonth(now.Year, now.Month - 1);
                 }
 
-                if (idadeDias < 0)
+                if (months < 0)
                 {
-                    idadeMeses--;
-                    if (idadeMeses < 0)
-                    {
-                        idadeMeses += 12;
-                        idadeAnos--;
-                    }
-
-                    DateTime ultimoMes = dataNascimento.AddMonths(idadeMeses);
-                    idadeDias += (dataAtual - ultimoMes).Days;
+                    years--;
+                    months += 12;
                 }
 
-                Console.WriteLine($"Sua idade é: {idadeAnos} anos, {idadeMeses} meses e {idadeDias} dias.");
+                Console.WriteLine($"Sua idade é: {years} anos, {months} meses e {days} dias.");
             }
             else
             {
-                Console.WriteLine("Data inválida. Por favor, insira uma data no formato dd/MM/yyyy.");
+                Console.WriteLine("Data inválida. Por favor, insira uma data no formato dia/mês/ano.");
             }
         }
     }

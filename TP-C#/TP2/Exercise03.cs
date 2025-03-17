@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TP_C_.TP2
 {
-    internal class Exercise01
+    internal class Exercise03
     {
         public static void Run()
         {
@@ -23,23 +23,7 @@ namespace TP_C_.TP2
             {
                 DateTime now = DateTime.Now;
 
-                int years = now.Year - birthDate.Year;
-                int months = now.Month - birthDate.Month;
-                int days = now.Day - birthDate.Day;
-
-                if (days < 0)
-                {
-                    months--;
-                    days += DateTime.DaysInMonth(now.Year, now.Month - 1);
-                }
-
-                if (months < 0)
-                {
-                    years--;
-                    months += 12;
-                }
-
-                Console.WriteLine($"Sua idade é: {years} anos, {months} meses e {days} dias.");
+                
             }
             else
             {
